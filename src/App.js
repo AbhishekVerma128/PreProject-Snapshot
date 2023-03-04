@@ -9,7 +9,6 @@ function App() {
   const [photos,setPhotos] =useState([]);
   return (
   <BrowserRouter>
-  
     <div className="App">
       <InputContex.Provider value={{setPhotos}}>
       <Navbar />
@@ -17,7 +16,6 @@ function App() {
       <Route path='/' element={<ImageSearch photos={photos} />}/>
       </Routes>
       </InputContex.Provider>
-
     </div> 
     
     </BrowserRouter>
