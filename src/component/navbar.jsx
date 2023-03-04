@@ -4,16 +4,13 @@ import {InputContex} from "../context/inputContex"
 export default function Navbar() {
 const {setPhotos}= useContext(InputContex)
 const [category,setCategory] =useState("all")
-// console.log(category);
 const [input, setInput] = useState("")
 const [btnInput, setbtnInput] =useState("")
 const CatSearch =(event)=>{
 setCategory(event.target.innerText)
-// "searchImages()"
 }
 const handleSeach=()=>{
     setbtnInput(input)
-    // console.log(btnInput);
 }
 useEffect(()=>{
     if(category !== 'all'){
@@ -28,11 +25,9 @@ useEffect(()=>{
             let url = `https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apiKey}&format=json&nojsoncallback=1&text=${btnInput}`;
             if (category !== 'all') {
               url += `&tags=${category}`;
-            //   setCategory("")
             }
             console.log(url);
             await axios.get(url)
-            //   .then(response => response.json())
               .then(data => {
                 console.log(data);
                 setPhotos(data.data.photos.photo)
@@ -44,7 +39,6 @@ useEffect(()=>{
     }
 ,[category,btnInput])
 
-    // console.log(input);
     return (
         <div>
             <div>
